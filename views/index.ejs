@@ -1,0 +1,249 @@
+                <!-- Project Title -->
+                <div class="py-2 px-4 mb-2-sm d-sm-flex align-items-center justify-content-center">
+                    <h1 data-locale-key="project_title" class="h2 mb-0 text-gray-900 text-center"></h1>
+                </div>
+                <br>
+                
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+
+                    <!-- Page Heading -->
+                    <div class="row">
+                        <div class="d-sm-flex align-items-center justify-content-between mb-4 col-6">
+                            <h1 data-locale-key="home" class="h3 mb-0 text-gray-800"></h1>
+                        </div>
+                        <!-- <div class="col-lg-6 d-flex justify-content-end align-items-center ml-auto">
+                            <% if (user === 'admin') { %>
+                                <button type="button" id="resetTds" class="col-3 btn btn-primary mr-2">Reset TDS</button>
+                                <button type="button" id="resetWaterLevel" class="col-3 btn btn-success mr-2">Reset Water</button>
+                                <button type="button" id="resetPM25" class="col-3 btn btn-info mr-2">Reset PM2.5</button>
+                            <% } %>
+                        </div> -->
+                    </div>
+
+                    <!-- Content Row -->
+
+                        <div class="col mb-4">
+                            <!-- Area Chart -->
+                            <div class="">
+                                <div class="card shadow mb-4">
+                                    <!-- Card Header - Dropdown -->
+                                    <div
+                                        class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                        <h6 data-locale-key="chart_title" class="m-0 font-weight-bold text-primary"></h6>
+                                        <div class="dropdown no-arrow">
+                                            <a class="dropdown-toggle border border-3 shadow" href="#" role="button" id="dropdownMenuLink"
+                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-900"></i>
+                                            </a>
+                                            <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+                                                aria-labelledby="dropdownMenuLink">
+                                                <div data-locale-key="chart_option" class="dropdown-header"></div>
+                                                <a data-locale-key="temperature" class="dropdown-item" id="temperatureButton"></a>
+                                                <a data-locale-key="pH" class="dropdown-item" id="pHButton"></a>
+                                                <a data-locale-key="conductivity" class="dropdown-item" id="conductivityButton"></a>
+                                                <a data-locale-key="oxygen" class="dropdown-item" id="oxygenButton"></a>
+                                                <a data-locale-key="ppm" class="dropdown-item" id="ppmButton"></a>
+                                                <!-- <a data-locale-key="waterLevel" class="dropdown-item" id="waterLevelButton"></a> -->
+                                                <a data-locale-key="pm25" class="dropdown-item" id="pm25Button"></a>
+                                                <div class="dropdown-divider"></div>
+                                                <!-- <a data-locale-key="something_else" class="dropdown-item"></a> -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Card Body -->
+                                    <div class="card-body">
+                                        <div class="chart-area">
+                                            <canvas id="myAreaChart"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="py-2 mt-1">
+                            <!-- Cards Row 1 -->
+                            <div class="row">
+                                <!-- Temperature Card -->
+                                <div class="col-lg-3 mb-4">
+                                    <div class="card border-left-primary shadow h-100 py-2">
+                                        <div class="card-body">
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col mr-2">
+                                                    <div data-locale-key="temperature_unit" class="text-2xl font-weight-bold text-primary text-uppercase mb-1">
+                                                        </div>
+                                                    <div class="h5 mb-0 font-weight-bold text-gray-800" id="temperature"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+        
+                                <!-- pH Card -->
+                                <div class="col-lg-3 mb-4">
+                                    <div class="card border-left-success shadow h-100 py-2">
+                                        <div class="card-body">
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col mr-2">
+                                                    <div data-locale-key="pH_unit" class="text-2xl font-weight-bold text-success mb-1">
+                                                        </div>
+                                                    <div class="h5 mb-0 font-weight-bold text-gray-800" id="pH"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+        
+                                <!-- Conductivity Card -->
+                                <div class="col-lg-3 mb-4">
+                                    <div class="card border-left-info shadow h-100 py-2">
+                                        <div class="card-body">
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col mr-2">
+                                                    <div data-locale-key="conductivity_unit" class="text-2xl font-weight-bold text-info mb-1">
+                                                    </div>
+                                                    <div class="row no-gutters align-items-center">
+                                                        <div class="col-auto">
+                                                            <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800" id="conductivity"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Dissolved Oxygen Card -->
+                                <div class="col-lg-3 mb-4">
+                                <div class="card border-left-citrin shadow h-100 py-2">
+                                    <div class="card-body">
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col mr-2">
+                                                <div data-locale-key="oxygen_unit" class="text-2xl font-weight-bold text-citrin mb-1">
+                                                    </div>
+                                                <div class="h5 mb-0 font-weight-bold text-gray-800" id="oxygen"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                            <!-- Cards Row 2 -->
+                            <div class="row">
+                                <!-- Dissolved Solid Card -->
+                                <div class="col-lg-3 mb-4">
+                                <div class="card border-left-secondary shadow h-100 py-2">
+                                    <div class="card-body">
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col mr-2">
+                                                <div data-locale-key="ppm_unit" class="text-2xl font-weight-bold text-secondary mb-1">
+                                                    </div>
+                                                <div class="h5 mb-0 font-weight-bold text-gray-800" id="ppm"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                                <!-- Water Level Card -->
+                                <!-- <div class="col-lg-3 mb-4">
+                                <div class="card border-left-danger shadow h-100 py-2">
+                                    <div class="card-body">
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col mr-2">
+                                                <div data-locale-key="waterLevel_unit" class="text-2xl font-weight-bold text-danger mb-1">
+                                                    </div>
+                                                <div class="h5 mb-0 font-weight-bold text-gray-800" id="waterLevel"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div> -->
+                                <!-- PM25 Card -->
+                                <div class="col-lg-3 mb-4">
+                                    <div class="card border-left-hunter-green shadow h-100 py-2">
+                                        <div class="card-body">
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col mr-2">
+                                                    <div data-locale-key="pm25_unit" class="text-2xl font-weight-bold text-hunter-green mb-1">
+                                                        </div>
+                                                    <div class="h5 mb-0 font-weight-bold text-gray-800" id="pm25"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Time Card -->
+                                <div class="col-lg-6 mb-4">
+                                    <div class="card border-left-indigo shadow h-100 py-2">
+                                        <div class="card-body">
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col mr-2">
+                                                    <div data-locale-key="time" class="text-2xl font-weight-bold text-indigo mb-1 text-uppercase">
+                                                       </div>
+                                                    <div class="h5 mb-0 font-weight-bold text-gray-800" id="createdAt"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Indicator Range -->
+                        <div class="row">
+                            <div class="col-lg-6 card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 data-locale-key="indicator_ph" class="m-0 font-weight-bold text-primary"></h6>
+                                </div>
+                                <div class="card-body row">
+                                    <div class="d-flex col align-items-center justify-content-center mx-auto">
+                                        <div>
+                                            <img src="img/ph-indicator.png" alt="pm25-indicator" class="img-fluid mb-4"></img>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 data-locale-key="indicator_oxygen" class="m-0 font-weight-bold text-primary"></h6>
+                                </div>
+                                <div class="card-body row">
+                                    <div class="d-flex col align-items-center justify-content-center mx-auto">
+                                        <div>
+                                            <img src="img/oxygen-indicator.png" alt="pm25-indicator" class="img-fluid mb-4"></img>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6 card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 data-locale-key="indicator_ppm" class="m-0 font-weight-bold text-primary"></h6>
+                                </div>
+                                <div class="card-body row">
+                                    <div class="d-flex col align-items-center justify-content-center mx-auto">
+                                        <div>
+                                            <img src="img/ppm-indicator.png" alt="pm25-indicator" class="img-fluid mb-4"></img>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 data-locale-key="indicator_pm25" class="m-0 font-weight-bold text-primary"></h6>
+                                </div>
+                                <div class="card-body row">
+                                    <div class="d-flex col align-items-center justify-content-center mx-auto">
+                                        <div>
+                                            <img src="img/pm25-indicator.png" alt="pm25-indicator" class="img-fluid mb-4"></img>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                </div>
+                <!-- /.container-fluid -->

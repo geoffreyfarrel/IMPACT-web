@@ -1,0 +1,26 @@
+.text-indigo {
+    color: #4F1271 !important;
+  }
+
+.border-left-indigo {
+    border-left: 0.25rem solid #4F1271 !important;
+  }
+
+.text-hunter-green {
+    color: #386641 !important;
+}
+
+.border-left-hunter-green {
+    border-left: 0.25rem solid #386641 !important;
+  }
+.text-citrin {
+    color: #ffbf46 !important;
+}
+
+.border-left-citrin {
+    border-left: 0.25rem solid #ffbf46 !important;
+  }
+
+.text-2xl {
+   font-size: 1.3rem;
+ }
