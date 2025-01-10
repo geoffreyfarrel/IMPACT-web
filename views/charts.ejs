@@ -1,0 +1,138 @@
+<!-- Begin Page Content -->
+<div class="container-fluid">
+  <!-- Page Heading -->
+  <h1 data-locale-key="all_data_result" class="h3 mb-2 text-gray-800"></h1>
+  <div class="col mb-4">
+    <div>
+      <div class="card shadow mb-4">
+        <!-- Card Header - Dropdown -->
+        <div
+          class="card-header py-3 d-flex flex-row align-items-center justify-content-between"
+        >
+          <h6
+            data-locale-key="chart_title"
+            class="m-0 font-weight-bold text-primary"
+          ></h6>
+          <div class="dropdown no-arrow">
+            <a
+              class="dropdown-toggle border border-3 shadow"
+              href="#"
+              role="button"
+              id="dropdownMenuLink"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-900"></i>
+            </a>
+            <div
+              class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+              aria-labelledby="dropdownMenuLink"
+            >
+              <div data-locale-key="chart_option" class="dropdown-header"></div>
+              <a
+                data-locale-key="temperature"
+                class="dropdown-item"
+                id="temperatureButton"
+              ></a>
+              <a data-locale-key="pH" class="dropdown-item" id="pHButton"></a>
+              <a
+                data-locale-key="conductivity"
+                class="dropdown-item"
+                id="conductivityButton"
+              ></a>
+              <a
+                data-locale-key="oxygen"
+                class="dropdown-item"
+                id="oxygenButton"
+              ></a>
+              <a data-locale-key="ppm" class="dropdown-item" id="ppmButton"></a>
+              <!-- <a data-locale-key="waterLevel" class="dropdown-item" id="waterLevelButton"></a> -->
+              <a
+                data-locale-key="pm25"
+                class="dropdown-item"
+                id="pm25Button"
+              ></a>
+              <div class="dropdown-divider"></div>
+              <!-- <a data-locale-key="something_else" class="dropdown-item"></a> -->
+            </div>
+          </div>
+        </div>
+        <!-- Card Body -->
+        <div class="card-body">
+          <form
+            id="selectedChart"
+            action="/selected-chart"
+            method="POST"
+            class=""
+          >
+            <div class="row d-flex justify-content-start mb-2">
+              <div class="col-xl-2 col-sm-4">
+                <span class="mr-2"
+                  >Start Date:
+                  <input
+                    type="text"
+                    id="chartStartDatePicker"
+                    class="mr-4 form-control"
+                    name="startDate"
+                /></span>
+              </div>
+              <div class="col-xl-2 col-sm-4">
+                <span
+                  >End Date:
+                  <input
+                    type="text"
+                    id="chartEndDatePicker"
+                    class="mr-4 form-control"
+                    name="endDate"
+                /></span>
+              </div>
+              <div class="col-xl-2 col-sm-4">
+                <span
+                  >Selected Chart:
+                  <select
+                    class="form-control mr-4"
+                    aria-label="Select Chart"
+                    name="sensorType"
+                  >
+                    <option
+                      selected
+                      value="temperature"
+                      data-locale-key="temperature"
+                    ></option>
+                    <option value="ph" data-locale-key="pH"></option>
+                    <option
+                      value="conductivity"
+                      data-locale-key="conductivity"
+                    ></option>
+                    <option value="oxygen" data-locale-key="oxygen"></option>
+                    <option value="ppm" data-locale-key="ppm"></option>
+                    <option value="pm25" data-locale-key="pm25"></option>
+                  </select>
+                </span>
+              </div>
+              <div
+                class="align-items-center user-select-none col-xl-2 col-md-4 col-sm-12"
+              >
+                <br />
+                <button
+                  class="btn btn-primary btn-icon-split mb-4"
+                  type="submit"
+                >
+                  <span class="icon text-white-50">
+                    <i class="fas fa-search"></i>
+                  </span>
+                  <span class="text">Search</span>
+                </button>
+              </div>
+            </div>
+          </form>
+          <div class="chart-area">
+            <canvas id="selectedChartCanvas"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /.container-fluid -->

@@ -1,70 +1,100 @@
-                <!-- Topbar -->
-                <div class="navbar navbar-expand navbar-light bg-white topbar static-top shadow">
+<!-- Topbar -->
+<div
+  class="navbar navbar-expand navbar-light bg-white topbar static-top shadow"
+>
+  <!-- Sidebar Toggle (Topbar) -->
+  <button
+    id="sidebarToggleTop"
+    class="btn btn-link d-md-none rounded-circle mr-3"
+  >
+    <i class="fa fa-bars"></i>
+  </button>
 
-                    <!-- Sidebar Toggle (Topbar) -->
-                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-                        <i class="fa fa-bars"></i>
-                    </button>
-
-                    <!-- Logo -->
-                    <div class="row">
-                        <div class="col row text-center align-items-center">
-                            <div class="col-4">
-                                <img src="img/dmcl-logo.png" alt="honhui-logo" class="img-fluid" width="500">
-                            </div>                        
-                            <div class="col-4">
-                                <img src="img/ntpu-logo.png" alt="ntpu-logo" class="img-fluid" width="400">
-                            </div>
-                            <div class="col-4">
-                                <img src="img/honhui-logo.png" alt="honhui-logo" class="img-fluid" width="300">
-                            </div>
-                        </div>
-                        <div class="d-flex">
-                            <!-- Topbar Navbar -->
-                            <ul class="align-items-center navbar-nav ml-auto">
-                                <li class="nav-item dropdown no-arrow">
-                                    <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <img id="language-flag" class="img-profile rounded-circle"
-                                        src="img/cn-flag.png" width="30px" height="30px">
-                                    </a>
-                                    <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                        aria-labelledby="userDropdown">
-                                        <a class="dropdown-item" href="javascript:void(0);" onclick="switchLanguage('cn')">
-                                            <img id="language-flag" class="img-profile rounded-circle"
-                                            src="img/cn-flag.png" width="30px" height="30px">
-                                            中文(繁體)
-                                        </a>
-                                        <a class="dropdown-item" href="javascript:void(0);" onclick="switchLanguage('en')">
-                                            <img id="language-flag" class="img-profile rounded-circle"
-                                            src="img/en-flag.png" width="30px" height="30px">
-                                            English(US)
-                                        </a>
-                                    </div>
-                                </li>
-        
-                                <div class="topbar-divider d-none d-sm-block"></div>
-        
-                                <!-- Nav Item - User Information -->
-                                <li class="nav-item dropdown no-arrow">
-                                    <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <span class="mr-2 d-none d-lg-inline text-gray-600 small"><%= user %></span>
-                                        <img class="img-profile rounded-circle"
-                                            src="img/undraw_profile.svg">
-                                    </a>
-                                    <!-- Dropdown - User Information -->
-                                    <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                        aria-labelledby="userDropdown">
-                                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                                            <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                            <span data-locale-key="logout"></span>
-                                        </a>
-                                    </div>
-                                </li>
-        
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <!-- End of Topbar -->
+  <!-- Logo -->
+  <div class="row">
+    <div class="col row text-center align-items-center">
+      <div class="col-4">
+        <img
+          src="img/dmcl-logo.png"
+          alt="honhui-logo"
+          class="img-fluid"
+          width="500"
+        />
+      </div>
+      <div class="col-4">
+        <img
+          src="img/ntpu-logo.png"
+          alt="ntpu-logo"
+          class="img-fluid"
+          width="400"
+        />
+      </div>
+      <div class="col-4">
+        <img
+          src="img/honhui-logo.png"
+          alt="honhui-logo"
+          class="img-fluid"
+          width="300"
+        />
+      </div>
+    </div>
+    <div class="d-flex">
+      <!-- Topbar Navbar -->
+      <ul class="align-items-center navbar-nav ml-auto">
+        <li class="nav-item dropdown no-arrow">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            id="userDropdown"
+            role="button"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            <img
+              id="language-flag"
+              class="img-profile rounded-circle"
+              src="img/cn-flag.png"
+              width="30px"
+              height="30px"
+            />
+          </a>
+          <div
+            class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+            aria-labelledby="userDropdown"
+          >
+            <a
+              class="dropdown-item"
+              href="javascript:void(0);"
+              onclick="switchLanguage('cn')"
+            >
+              <img
+                id="language-flag"
+                class="img-profile rounded-circle"
+                src="img/cn-flag.png"
+                width="30px"
+                height="30px"
+              />
+              中文(繁體)
+            </a>
+            <a
+              class="dropdown-item"
+              href="javascript:void(0);"
+              onclick="switchLanguage('en')"
+            >
+              <img
+                id="language-flag"
+                class="img-profile rounded-circle"
+                src="img/en-flag.png"
+                width="30px"
+                height="30px"
+              />
+              English(US)
+            </a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- End of Topbar -->

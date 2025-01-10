@@ -1,10 +1,11 @@
-const mongoose = require('mongoose');
-mongoose.connect('mongodb://dmcl:unigrid@10.141.52.16:27017/?authMechanism=DEFAULT')
-.then();
+const { DATABASE_URL } = require("./env");
 
-const impactDB = mongoose.connection.useDb('IMPACT');
+const mongoose = require("mongoose");
+mongoose.connect(DATABASE_URL).then();
 
-const UnderWaterSensor = require('../models/under-water-sensor');
+const impactDB = mongoose.connection.useDb("IMPACT");
+
+const UnderWaterSensor = require("../models/under-water-sensor");
 
 // // Menambah 1 data
 // const underWaterSensor1 = new UnderWaterSensor({
