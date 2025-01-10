@@ -231,7 +231,7 @@ app.get("/all-data", async (req, res) => {
 
 // Endpoint to get selected chart
 app.post("/selected-chart", async (req, res) => {
-  const { startDate, endDate } = req.body;
+  const { startDate, endDate, chartType } = req.body;
 
   if (!isValidDate(startDate) || !isValidDate(endDate)) {
     return res.status(400).json({
@@ -290,7 +290,7 @@ app.post("/selected-chart", async (req, res) => {
 
     res.status(200).json({
       message: "Successfully get data",
-      data: chartData,
+      data: [{ chartData, chartType, chartDataLength }],
     });
   } catch (error) {
     res.status(400).json({

@@ -5,59 +5,6 @@
   <div class="col mb-4">
     <div>
       <div class="card shadow mb-4">
-        <!-- Card Header - Dropdown -->
-        <div
-          class="card-header py-3 d-flex flex-row align-items-center justify-content-between"
-        >
-          <h6
-            data-locale-key="chart_title"
-            class="m-0 font-weight-bold text-primary"
-          ></h6>
-          <div class="dropdown no-arrow">
-            <a
-              class="dropdown-toggle border border-3 shadow"
-              href="#"
-              role="button"
-              id="dropdownMenuLink"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-            >
-              <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-900"></i>
-            </a>
-            <div
-              class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-              aria-labelledby="dropdownMenuLink"
-            >
-              <div data-locale-key="chart_option" class="dropdown-header"></div>
-              <a
-                data-locale-key="temperature"
-                class="dropdown-item"
-                id="temperatureButton"
-              ></a>
-              <a data-locale-key="pH" class="dropdown-item" id="pHButton"></a>
-              <a
-                data-locale-key="conductivity"
-                class="dropdown-item"
-                id="conductivityButton"
-              ></a>
-              <a
-                data-locale-key="oxygen"
-                class="dropdown-item"
-                id="oxygenButton"
-              ></a>
-              <a data-locale-key="ppm" class="dropdown-item" id="ppmButton"></a>
-              <!-- <a data-locale-key="waterLevel" class="dropdown-item" id="waterLevelButton"></a> -->
-              <a
-                data-locale-key="pm25"
-                class="dropdown-item"
-                id="pm25Button"
-              ></a>
-              <div class="dropdown-divider"></div>
-              <!-- <a data-locale-key="something_else" class="dropdown-item"></a> -->
-            </div>
-          </div>
-        </div>
         <!-- Card Body -->
         <div class="card-body">
           <form
@@ -93,21 +40,14 @@
                   <select
                     class="form-control mr-4"
                     aria-label="Select Chart"
-                    name="sensorType"
+                    name="chartType"
                   >
                     <option
                       selected
-                      value="temperature"
-                      data-locale-key="temperature"
+                      value="line"
+                      data-locale-key="line_chart"
                     ></option>
-                    <option value="ph" data-locale-key="pH"></option>
-                    <option
-                      value="conductivity"
-                      data-locale-key="conductivity"
-                    ></option>
-                    <option value="oxygen" data-locale-key="oxygen"></option>
-                    <option value="ppm" data-locale-key="ppm"></option>
-                    <option value="pm25" data-locale-key="pm25"></option>
+                    <option value="bar" data-locale-key="bar_chart"></option>
                   </select>
                 </span>
               </div>
@@ -128,7 +68,22 @@
             </div>
           </form>
           <div class="chart-area">
-            <canvas id="selectedChartCanvas"></canvas>
+            <canvas id="temperatureCanvas"></canvas>
+          </div>
+          <div class="chart-area">
+            <canvas id="pHCanvas"></canvas>
+          </div>
+          <div class="chart-area">
+            <canvas id="conductivityCanvas"></canvas>
+          </div>
+          <div class="chart-area">
+            <canvas id="oxygenCanvas"></canvas>
+          </div>
+          <div class="chart-area">
+            <canvas id="ppmCanvas"></canvas>
+          </div>
+          <div class="chart-area">
+            <canvas id="pm25Canvas"></canvas>
           </div>
         </div>
       </div>

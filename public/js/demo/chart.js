@@ -267,7 +267,7 @@ const loadLocaleAndUpdateChart = async (language) => {
 // Function to update the chart labels when language changes
 const updateChartLabels = () => {
   if (currentChart) {
-    const translatedLabel = getTranslatedLabel(dataType);
+    const translatedLabel = getTranslatedLabel(currentDataType);
     currentChart.data.datasets[0].label = translatedLabel;
     currentChart.update();
   }

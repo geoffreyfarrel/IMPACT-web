@@ -126,5 +126,7 @@
   "indicator_ppm": "Dissolved Solid Scale",
   "indicator_oxygen": "Dissolved Oxygen Scale",
   "indicator_pm25": "PM2.5 Scale",
-  "charts": "Charts"
+  "charts": "Charts",
+  "line_chart": "Line Chart",
+  "bar_chart": "Bar Chart"
 }

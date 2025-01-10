@@ -2,12 +2,21 @@
 let languageLabels = {};
 let currentLanguage = "en"; // Default language
 
+const staticDataTypes = [
+  "temperature",
+  "pH",
+  "conductivity",
+  "oxygen",
+  "ppm",
+  "pm25",
+];
+
 // Function to load locale and update the chart labels
-const loadLocaleAndUpdateChart = async (language, currentChart) => {
+const loadLocaleAndUpdateChart = async (language, charts) => {
   try {
     // Load the languageLabels from the locale file (language-switcher.js should already manage this)
     languageLabels = await loadLocale(language);
-    updateChartLabels(currentChart);
+    updateAllChartLabels(charts);
   } catch (error) {
     console.error("Error loading locale:", error);
   }
@@ -28,11 +37,14 @@ document.addEventListener("changeLanguage", function (event) {
   loadLocaleAndUpdateChart(currentLanguage);
 });
 
-// Function to update the chart labels when language changes
-const updateChartLabels = (currentChart) => {
-  if (currentChart) {
-    const translatedLabel = getTranslatedLabel(currentDataType);
-    currentChart.data.datasets[0].label = translatedLabel;
-    currentChart.update();
+const updateAllChartLabels = (charts) => {
+  if (!charts || !Array.isArray(charts) || charts.length === 0) {
+    return;
   }
+  charts.forEach((chart, index) => {
+    const dataType = staticDataTypes[index]; // Get the corresponding data type
+    const translatedLabel = getTranslatedLabel(dataType); // Get translated label
+    chart.data.datasets[0].label = translatedLabel; // Update chart label
+    chart.update(); // Refresh the chart
+  });
 };
