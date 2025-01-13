@@ -330,6 +330,8 @@ const createChart = (chartData, translatedLabel) => {
           fontColor: "black", // Set legend label color to black
           fontSize: 24,
           fontStyle: "bold",
+          boxWidth: 0, // Remove the box width
+          boxHeight: 0, // Remove the box height
         },
       },
       tooltips: {
