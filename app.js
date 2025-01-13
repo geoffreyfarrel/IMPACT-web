@@ -124,13 +124,14 @@ app.get("/chart-data", async (req, res) => {
     const latestSensorArray = await Sensor.find()
       .sort({ createdAt: -1 })
       .limit(144);
+    const reversedLatestSensorArray = latestSensorArray.reverse();
 
     // Calculate hourly averages (6 data points per hour)
     const hourlyAverages = [];
     for (let i = 0; i < 24; i++) {
       const start = i * 6;
       const end = start + 6;
-      const hourData = latestSensorArray.slice(start, end);
+      const hourData = reversedLatestSensorArray.slice(start, end);
 
       // Calculate the average for this hour
       const hourAvg = hourData.reduce(

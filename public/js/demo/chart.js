@@ -257,7 +257,7 @@ const transformDataForChart = (rawData, dataToBeShown) => {
 
   // Transform the raw data into a format suitable for your chart
   return {
-    labels: labels.reverse(),
+    labels: labels,
     datasets: [
       {
         label: getTranslatedLabel(dataToBeShown), // Fetch translated label
@@ -272,7 +272,7 @@ const transformDataForChart = (rawData, dataToBeShown) => {
         borderWidth: 3,
         fill: false,
         tension: 0.4, // Smooth curve
-        data: values.reverse(),
+        data: values,
       },
     ],
   };
