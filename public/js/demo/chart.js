@@ -7,6 +7,7 @@ Chart.defaults.global.defaultFontColor = "#858796";
 let dataTypes = ["temperature", "pH", "conductivity", "oxygen", "ppm", "pm25"];
 let currentDataTypeIndex = 0;
 let dataTypeSwitchInterval = null;
+let colorPallete;
 
 // Language labels object to be loaded dynamically
 let languageLabels = {};
@@ -81,21 +82,30 @@ const fetchDataAndUpdateChart = async (dataToBeShown) => {
 
     const responseBody = await response.json();
     const data = responseBody.data[0];
-    console.log("Fetched data:", data);
+    // console.log("Fetched data:", data);
 
     // Transform data for the chart
     const chartData = transformDataForChart(data, dataToBeShown);
-    // console.log('Transformed chart data:', chartData);
+    // console.log("Transformed chart data:", chartData);
 
     // Get translated label for the current data type
     const translatedLabel = getTranslatedLabel(currentDataType);
 
     // Update or create the chart
     if (currentChart) {
-      // Update chart data without destroying it
-      currentChart.data.labels = chartData.labels;
-      currentChart.data.datasets[0].data = chartData.datasets[0].data;
+      // Update chart labels and data
+      currentChart.data.labels = chartData.labels; // Update labels
+      currentChart.data.datasets[0].data = chartData.datasets[0].data; // Update data values
+
+      // Update dynamic colors
+      currentChart.data.datasets[0].pointBackgroundColor =
+        chartData.datasets[0].pointBackgroundColor; // Update point colors
+      currentChart.data.datasets[0].backgroundColor =
+        chartData.datasets[0].backgroundColor; // Update dataset background color
+
+      // Optionally update the label
       currentChart.data.datasets[0].label = translatedLabel;
+
       currentChart.update();
     } else {
       // Create chart if it doesn't exist yet
@@ -218,6 +228,24 @@ const transformDataForChart = (rawData, dataToBeShown) => {
     });
   };
 
+  switch (dataToBeShown) {
+    case "pH":
+      colorPallete = pHColors(data.reverse()); // Call pHColors to get dynamic colors for each point
+      break;
+    case "oxygen":
+      colorPallete = oxygenColors(data); // Call oxygenColors to get dynamic colors
+      break;
+    case "ppm":
+      colorPallete = ppmColors(data); // Call ppmColors to get dynamic colors
+      break;
+    case "pm25":
+      colorPallete = pm25Colors(data); // Call pm25Colors to get dynamic colors
+      break;
+    default:
+      colorPallete = data.map(() => "rgba(58, 96, 208, 1)"); // Default static color
+      break;
+  }
+
   let labels = data.map((item) => {
     const date = new Date(item.createdAt);
     const localDate = new Date(date.getTime() + 8 * 3600000); // Adding 8 hours for UTC+8
@@ -231,18 +259,17 @@ const transformDataForChart = (rawData, dataToBeShown) => {
     datasets: [
       {
         label: getTranslatedLabel(dataToBeShown), // Fetch translated label
-        lineTension: 0.3,
-        backgroundColor: "rgba(78, 115, 223, 0.05)",
-        borderColor: "rgba(78, 115, 223, 1)",
-        pointRadius: 3,
-        pointBackgroundColor: "rgba(78, 115, 223, 1)",
-        pointBorderColor: "rgba(78, 115, 223, 1)",
+        borderColor: "black",
+        backgroundColor: colorPallete,
+        pointRadius: 6,
+        pointBackgroundColor: colorPallete,
+        pointBorderColor: "rgba(0, 0, 0, 0)", // Transparent border around points
+        pointBorderWidth: 0,
         pointHoverRadius: 3,
-        pointHoverBackgroundColor: "rgba(78, 115, 223, 1)",
-        pointHoverBorderColor: "rgba(78, 115, 223, 1)",
         pointHitRadius: 10,
-        pointBorderWidth: 2,
+        borderWidth: 3,
         fill: false,
+        tension: 0.4, // Smooth curve
         data: values.reverse(),
       },
     ],
