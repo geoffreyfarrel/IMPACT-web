@@ -228,20 +228,18 @@ const transformDataForChart = (rawData, dataToBeShown) => {
     });
   };
 
-  const reversedData = data.reverse();
-
   switch (dataToBeShown) {
     case "pH":
-      colorPallete = pHColors(reversedData); // Call pHColors to get dynamic colors for each point
+      colorPallete = pHColors(data); // Call pHColors to get dynamic colors for each point
       break;
     case "oxygen":
-      colorPallete = oxygenColors(reversedData); // Call oxygenColors to get dynamic colors
+      colorPallete = oxygenColors(data); // Call oxygenColors to get dynamic colors
       break;
     case "ppm":
-      colorPallete = ppmColors(reversedData); // Call ppmColors to get dynamic colors
+      colorPallete = ppmColors(data); // Call ppmColors to get dynamic colors
       break;
     case "pm25":
-      colorPallete = pm25Colors(reversedData); // Call pm25Colors to get dynamic colors
+      colorPallete = pm25Colors(data); // Call pm25Colors to get dynamic colors
       break;
     default:
       colorPallete = data.map(() => "rgba(58, 96, 208, 1)"); // Default static color
