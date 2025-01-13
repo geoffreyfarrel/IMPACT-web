@@ -1,90 +1,85 @@
 <!-- Begin Page Content -->
 <div class="container-fluid">
   <!-- Page Heading -->
-  <h1 data-locale-key="all_data_result" class="h3 mb-2 text-gray-800"></h1>
-  <div class="col mb-4">
-    <div>
-      <div class="card shadow mb-4">
-        <!-- Card Body -->
-        <div class="card-body">
-          <form
-            id="selectedChart"
-            action="/selected-chart"
-            method="POST"
-            class=""
-          >
-            <div class="row d-flex justify-content-start mb-2">
-              <div class="col-xl-2 col-sm-4">
-                <span class="mr-2"
-                  >Start Date:
-                  <input
-                    type="text"
-                    id="chartStartDatePicker"
-                    class="mr-4 form-control"
-                    name="startDate"
-                /></span>
-              </div>
-              <div class="col-xl-2 col-sm-4">
-                <span
-                  >End Date:
-                  <input
-                    type="text"
-                    id="chartEndDatePicker"
-                    class="mr-4 form-control"
-                    name="endDate"
-                /></span>
-              </div>
-              <div class="col-xl-2 col-sm-4">
-                <span
-                  >Selected Chart:
-                  <select
-                    class="form-control mr-4"
-                    aria-label="Select Chart"
-                    name="chartType"
-                  >
-                    <option
-                      selected
-                      value="line"
-                      data-locale-key="line_chart"
-                    ></option>
-                    <option value="bar" data-locale-key="bar_chart"></option>
-                  </select>
-                </span>
-              </div>
-              <div
-                class="align-items-center user-select-none col-xl-2 col-md-4 col-sm-12"
-              >
-                <br />
-                <button
-                  class="btn btn-primary btn-icon-split mb-4"
-                  type="submit"
-                >
-                  <span class="icon text-white-50">
-                    <i class="fas fa-search"></i>
-                  </span>
-                  <span class="text">Search</span>
-                </button>
-              </div>
+  <h1 data-locale-key="charts" class="h3 mb-2 text-gray-800"></h1>
+  <div>
+    <div class="card shadow mb-4">
+      <!-- Card Body -->
+      <div class="card-body">
+        <form
+          id="selectedChart"
+          action="/selected-chart"
+          method="POST"
+          class=""
+        >
+          <div class="row d-flex justify-content-start mb-2">
+            <div class="col-xl-2 col-sm-4">
+              <span class="mr-2"
+                >Start Date:
+                <input
+                  type="text"
+                  id="chartStartDatePicker"
+                  class="mr-4 form-control"
+                  name="startDate"
+              /></span>
             </div>
-          </form>
-          <div class="chart-area">
-            <canvas id="temperatureCanvas"></canvas>
+            <div class="col-xl-2 col-sm-4">
+              <span
+                >End Date:
+                <input
+                  type="text"
+                  id="chartEndDatePicker"
+                  class="mr-4 form-control"
+                  name="endDate"
+              /></span>
+            </div>
+            <div class="col-xl-2 col-sm-4">
+              <span
+                >Selected Chart:
+                <select
+                  class="form-control mr-4"
+                  aria-label="Select Chart"
+                  name="chartType"
+                >
+                  <option
+                    selected
+                    value="line"
+                    data-locale-key="line_chart"
+                  ></option>
+                  <option value="bar" data-locale-key="bar_chart"></option>
+                </select>
+              </span>
+            </div>
+            <div
+              class="align-items-center user-select-none col-xl-2 col-md-4 col-sm-12"
+            >
+              <br />
+              <button class="btn btn-primary btn-icon-split mb-4" type="submit">
+                <span class="icon text-white-50">
+                  <i class="fas fa-search"></i>
+                </span>
+                <span class="text">Search</span>
+              </button>
+            </div>
           </div>
-          <div class="chart-area">
-            <canvas id="pHCanvas"></canvas>
-          </div>
-          <div class="chart-area">
-            <canvas id="conductivityCanvas"></canvas>
-          </div>
-          <div class="chart-area">
-            <canvas id="oxygenCanvas"></canvas>
-          </div>
-          <div class="chart-area">
-            <canvas id="ppmCanvas"></canvas>
-          </div>
-          <div class="chart-area">
-            <canvas id="pm25Canvas"></canvas>
-          </div>
+        </form>
+        <div class="chart-area">
+          <canvas id="temperatureCanvas"></canvas>
+        </div>
+        <div class="chart-area">
+          <canvas id="pHCanvas"></canvas>
+        </div>
+        <div class="chart-area">
+          <canvas id="conductivityCanvas"></canvas>
+        </div>
+        <div class="chart-area">
+          <canvas id="oxygenCanvas"></canvas>
+        </div>
+        <div class="chart-area">
+          <canvas id="ppmCanvas"></canvas>
+        </div>
+        <div class="chart-area">
+          <canvas id="pm25Canvas"></canvas>
         </div>
       </div>
     </div>

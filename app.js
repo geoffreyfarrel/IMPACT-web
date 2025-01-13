@@ -120,51 +120,62 @@ app.get("/card-data", async (req, res) => {
 
 // Endpoint to get latest 24 hourly averaged data points
 app.get("/chart-data", async (req, res) => {
-  const latestSensorArray = await Sensor.find()
-    .sort({ createdAt: -1 })
-    .limit(144);
+  try {
+    const latestSensorArray = await Sensor.find()
+      .sort({ createdAt: -1 })
+      .limit(144);
 
-  // Calculate hourly averages (6 data points per hour)
-  const hourlyAverages = [];
-  for (let i = 0; i < 24; i++) {
-    const start = i * 6;
-    const end = start + 6;
-    const hourData = latestSensorArray.slice(start, end);
+    // Calculate hourly averages (6 data points per hour)
+    const hourlyAverages = [];
+    for (let i = 0; i < 24; i++) {
+      const start = i * 6;
+      const end = start + 6;
+      const hourData = latestSensorArray.slice(start, end);
 
-    // Calculate the average for this hour
-    const hourAvg = hourData.reduce(
-      (sum, item) => {
-        return {
-          temperature: sum.temperature + item.temperature / 6,
-          pH: sum.pH + item.pH / 6,
-          conductivity: sum.conductivity + item.conductivity / 6,
-          oxygen: sum.oxygen + item.oxygen / 6,
-          ppm: sum.ppm + item.ppm / 6,
-          pm25: sum.pm25 + item.pm25 / 6,
-          index: i,
-        };
-      },
-      { temperature: 0, pH: 0, conductivity: 0, oxygen: 0, ppm: 0, pm25: 0 }
-    );
+      // Calculate the average for this hour
+      const hourAvg = hourData.reduce(
+        (sum, item) => {
+          return {
+            temperature: sum.temperature + item.temperature / 6,
+            pH: sum.pH + item.pH / 6,
+            conductivity: sum.conductivity + item.conductivity / 6,
+            oxygen: sum.oxygen + item.oxygen / 6,
+            ppm: sum.ppm + item.ppm / 6,
+            pm25: sum.pm25 + item.pm25 / 6,
+            index: i,
+          };
+        },
+        { temperature: 0, pH: 0, conductivity: 0, oxygen: 0, ppm: 0, pm25: 0 }
+      );
 
-    // Round the timestamp to the start of the hour
-    const roundedDate = new Date(hourData[0].createdAt);
-    roundedDate.setMinutes(0, 0, 0); // Set minutes, seconds, and milliseconds to zero
+      // Round the timestamp to the start of the hour
+      const roundedDate = new Date(hourData[0].createdAt);
+      roundedDate.setMinutes(0, 0, 0); // Set minutes, seconds, and milliseconds to zero
 
-    // Format values to 2 decimal places and add to hourly averages
-    hourlyAverages.push({
-      createdAt: roundedDate,
-      temperature: parseFloat(hourAvg.temperature.toFixed(2)),
-      pH: parseFloat(hourAvg.pH.toFixed(2)),
-      conductivity: parseFloat(hourAvg.conductivity.toFixed(2)),
-      oxygen: parseFloat(hourAvg.oxygen.toFixed(2)),
-      ppm: parseFloat(hourAvg.ppm.toFixed(2)),
-      pm25: parseFloat(hourAvg.pm25.toFixed(2)),
-      index: i,
+      // Format values to 2 decimal places and add to hourly averages
+      hourlyAverages.push({
+        createdAt: roundedDate,
+        temperature: parseFloat(hourAvg.temperature.toFixed(2)),
+        pH: parseFloat(hourAvg.pH.toFixed(2)),
+        conductivity: parseFloat(hourAvg.conductivity.toFixed(2)),
+        oxygen: parseFloat(hourAvg.oxygen.toFixed(2)),
+        ppm: parseFloat(hourAvg.ppm.toFixed(2)),
+        pm25: parseFloat(hourAvg.pm25.toFixed(2)),
+        index: i,
+      });
+    }
+    res.status(200).json({
+      message: "Successfully get chart data",
+      data: [{ hourlyAverages }],
+    });
+  } catch (error) {
+    res.status(400).json({
+      message: "Data is not found",
+      data: null,
     });
   }
 
-  res.json({ latestSensorArray: hourlyAverages });
+  // res.json({ latestSensorArray: hourlyAverages });
 });
 
 // Endpoint to get latest 50 table data
@@ -279,7 +290,7 @@ app.post("/selected-chart", async (req, res) => {
           stepData.reduce((sum, item) => sum + item.ppm, 0) / stepData.length
         ).toFixed(2),
         pm25: (
-          stepData.reduce((sum, item) => sum + item.ppm, 0) / stepData.length
+          stepData.reduce((sum, item) => sum + item.pm25, 0) / stepData.length
         ).toFixed(2),
       };
       chartData.push(averagedData);
@@ -289,7 +300,7 @@ app.post("/selected-chart", async (req, res) => {
     const chartDataLength = chartData.length;
 
     res.status(200).json({
-      message: "Successfully get data",
+      message: "Successfully get selected-chart data",
       data: [{ chartData, chartType, chartDataLength }],
     });
   } catch (error) {
