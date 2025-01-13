@@ -233,13 +233,13 @@ const transformDataForChart = (rawData, dataToBeShown) => {
       colorPallete = pHColors(data.reverse()); // Call pHColors to get dynamic colors for each point
       break;
     case "oxygen":
-      colorPallete = oxygenColors(data); // Call oxygenColors to get dynamic colors
+      colorPallete = oxygenColors(data.reverse()); // Call oxygenColors to get dynamic colors
       break;
     case "ppm":
-      colorPallete = ppmColors(data); // Call ppmColors to get dynamic colors
+      colorPallete = ppmColors(data.reverse()); // Call ppmColors to get dynamic colors
       break;
     case "pm25":
-      colorPallete = pm25Colors(data); // Call pm25Colors to get dynamic colors
+      colorPallete = pm25Colors(data.reverse()); // Call pm25Colors to get dynamic colors
       break;
     default:
       colorPallete = data.map(() => "rgba(58, 96, 208, 1)"); // Default static color
