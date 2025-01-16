@@ -202,13 +202,8 @@ app.get("/all-data", async (req, res) => {
     // Construct search query based on date
     let query = {};
     if (startDate && endDate) {
-      const startDateTime = new Date(startDate);
-      startDateTime.setHours(0, 0, 0, 0); // Set time to the start of the day
-      // console.log("StartDateTime: ", startDateTime);
-      const endDateTime = new Date(endDate);
-      endDateTime.setHours(23, 59, 59, 999); // Set time to the end of the day
-      // console.log("EndDateTime: ", endDateTime);
-      endDateTime.setDate(endDateTime.getDate() + 1);
+      const startDateTime = convertToUTCTime(new Date(startDate));
+      const endDateTime = convertToUTCTime(new Date(endDate));
 
       query.createdAt = {
         $gte: startDateTime,
