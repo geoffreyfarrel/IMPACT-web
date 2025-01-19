@@ -319,13 +319,13 @@ $(document).ready(function () {
             .replace(/-/g, "/");
         },
       },
+      {
+        data: "oxygen",
+        className: "text-center align-middle",
+      },
       // {
-      //   "data": "oxygen",
-      //   "className": "text-center align-middle"
-      // },
-      // {
-      //   "data": "predicted",
-      //   "className": "text-center align-middle"
+      //   data: "predicted",
+      //   className: "text-center align-middle",
       // },
       // {
       //   "data": "predicted",
