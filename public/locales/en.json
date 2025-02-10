@@ -22,6 +22,7 @@
   "waterLevel": "Water Level",
   "pm25": "PM2.5 (Air Pollution)",
   "time": "Measurement Time (UTC+8)",
+  "time_chart": "Measurement Time (UTC+8):",
   "temperature_unit": "Water Temperature (°C)",
   "pH_unit": "ACIDITY (pH)",
   "conductivity_unit": "CONDUCTIVITY (S/m)",

@@ -257,7 +257,7 @@ app.post("/selected-chart", async (req, res) => {
     };
 
     const totalPoints = await Sensor.countDocuments(query);
-    const targetPoints = 20;
+    const targetPoints = 50;
     const filteredData = await Sensor.find(query).sort({ createdAt: 1 });
 
     const step = Math.ceil(filteredData.length / targetPoints);
